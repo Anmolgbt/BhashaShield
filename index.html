@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BhashaShield – scam call safety in your language</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 10 10%27><text y=%278.5%27 font-size=%278%27>🛡️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#081428;--s1:#0e1f3d;--s2:#142a50;--line:#24406e;--tx:#eef3fb;--mu:#9db0cf;--teal:#2dd4bf;--amb:#f5b942;--red:#f0605d;--grn:#4ade80;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(900px 420px at 80% -10%,#0f3a5a55,transparent),var(--bg);color:var(--tx);font:17px/1.6 Mukta,"Noto Sans Devanagari",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Mukta,sans-serif;margin:0;line-height:1.15}
+.wrap{max-width:1120px;margin:0 auto;padding:18px 16px 60px}
+header{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font:800 21px "Bricolage Grotesque"}
+.badge{font-size:14px;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--mu)}
+.badge.live{color:var(--grn);border-color:#2a6b49}
+.hero{padding:34px 0 22px;max-width:760px}
+.hero h1{font-size:clamp(30px,5.4vw,52px);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--mu);font-size:19px;margin:12px 0 0}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:18px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h3{font-size:18px;margin-bottom:10px}
+.stack>*+*{margin-top:14px}
+label{display:block;font-size:15px;color:var(--mu);margin-bottom:4px}
+select,button{font:inherit;color:var(--tx)}
+select{width:100%;background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:10px}
+button{cursor:pointer;border:1px solid var(--line);background:var(--s2);border-radius:12px;padding:12px 16px;min-height:48px;font-weight:600;transition:transform .12s,background .15s}
+button:hover{background:#1b3868}button:active{transform:scale(.98)}
+button.pri{background:var(--teal);color:#042623;border-color:var(--teal)}button.pri:hover{background:#5eead4}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:20px;text-align:center;cursor:pointer;color:var(--mu);transition:.15s}
+.drop:hover,.drop.on{border-color:var(--teal);color:var(--tx);background:#0f2a4a}
+.wave{display:flex;align-items:center;gap:3px;height:44px}
+.wave i{flex:1;background:var(--line);border-radius:3px;height:20%;transition:background .3s}
+.wave.go i{background:var(--teal);animation:w 1s ease-in-out infinite}
+.wave.rec i{background:var(--red)}
+@keyframes w{50%{height:100%}}
+.steps{display:flex;gap:6px;flex-wrap:wrap}
+.step{flex:1;min-width:110px;padding:8px 10px;border-radius:10px;background:var(--s1);border:1px solid var(--line);font-size:15px;color:var(--mu)}
+.step.act{border-color:var(--teal);color:var(--tx)}.step.act::after{content:" …"}.step.done{color:var(--grn);border-color:#2a6b49}
+.hide{display:none!important}
+.tag{display:inline-block;font-size:14px;padding:2px 10px;border-radius:8px;margin-bottom:8px}
+.t-asr{background:#16365f;color:#a9d1ff}.t-ai{background:#0f4a45;color:#7ff0df}.t-sim{background:#4a3a10;color:var(--amb)}
+.tr{font-size:20px;line-height:1.9;padding:14px;border-radius:12px;background:#0a1830;border:1px solid var(--line)}
+mark{background:#f0605d33;color:#fff;border-bottom:3px solid var(--red);padding:0 2px;border-radius:3px}
+.ai{border-left:4px solid var(--teal)}
+.gauge{display:flex;gap:6px;margin:10px 0}.gauge b{flex:1;height:12px;border-radius:6px;background:var(--s2)}
+.lvl{font:800 26px "Bricolage Grotesque"}
+.ev{padding:10px 12px;border-radius:10px;background:var(--s2);margin-top:8px;border-left:4px solid var(--red)}
+.ev q{font-weight:600;quotes:none}
+.chips span{display:inline-block;background:var(--s2);border:1px solid var(--line);padding:2px 10px;border-radius:99px;margin:3px 4px 0 0;font-size:15px}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:10px;background:var(--s2);margin-top:8px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--teal);margin-top:3px}
+.chk input:checked+span{text-decoration:line-through;color:var(--mu)}
+.err{background:#3a1a1f;border:1px solid var(--red);padding:12px;border-radius:12px}
+.small{font-size:14.5px;color:var(--mu)}
+.res>*{animation:in .25s ease-out both}@keyframes in{from{opacity:0;transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.spin{display:inline-block;width:16px;height:16px;border:3px solid #fff5;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:6px}@keyframes sp{to{transform:rotate(360deg)}}
+</style></head><body><div class="wrap">
+<header><div class="logo"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 29 7v9c0 8-5 13-12 16C10 29 5 24 5 16V7z" fill="#2dd4bf"/><path d="M11 12h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-6l-4 3v-3h-2a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z" fill="#081428"/><circle cx="14" cy="16.5" r="1.2" fill="#2dd4bf"/><circle cx="17.5" cy="16.5" r="1.2" fill="#2dd4bf"/><circle cx="21" cy="16.5" r="1.2" fill="#2dd4bf"/></svg>BhashaShield</div><span id="mode" class="badge">checking…</span></header>
+<section class="hero"><h1>A suspicious call? Understand the danger before you act.</h1><p>Your multilingual AI safety companion. Detect warning signs, understand the risks, and hear what to do next.</p></section>
+
+<div class="grid"><aside class="stack">
+<div class="card stack"><h3>1. Add a recording</h3>
+<div class="drop" id="drop" tabindex="0" role="button">Tap to choose an audio file<br><span class="small">WAV, MP3, M4A, OGG, FLAC, AAC · only recordings you are allowed to use</span></div>
+<input type="file" id="file" accept="audio/*,.m4a,.aac,.opus,.amr" class="hide">
+<label class="chk" style="margin:0"><input type="checkbox" id="consent"><span class="small">I (and anyone speaking) agree to record a short sample. BhashaShield never records calls in the background.</span></label>
+<div class="row"><button id="rec">● Record sample</button><button id="stop" class="hide">■ Stop</button></div>
+<div id="fileinfo" class="small"></div>
+<div class="wave" id="wave"></div>
+<div class="row"><div><label for="asr">Language in audio</label><select id="asr"><option value="auto">Auto-detect</option><option value="mr">मराठी</option><option value="hi">हिन्दी</option><option value="en">English</option></select></div>
+<div><label for="out">Explain in</label><select id="out"><option value="mr">मराठी</option><option value="hi">हिन्दी</option><option value="en">English</option></select></div></div>
+<button class="pri" id="go" disabled>Analyze audio</button></div>
+<div class="card stack"><h3>Try a simulated call</h3><p class="small" style="margin:0">Written examples, not real calls. They run through the same analysis steps.</p>
+<button id="d1">Try Marathi Scam Demo</button><button id="d2">Try a normal-sounding call</button></div>
+</aside>
+
+<main class="stack"><div class="steps" id="steps"><div class="step" data-s="0">Hear</div><div class="step" data-s="1">Transcribe</div><div class="step" data-s="2">Analyze</div><div class="step" data-s="3">Speak</div></div>
+<div id="msg"></div>
+<div class="card" id="empty"><h3>Your results will appear here</h3><p class="small">Add a recording or open a demo. You will see the exact words first, then what BhashaShield thinks of them, kept clearly apart.</p></div>
+<div class="res stack hide" id="res">
+<div class="card"><span class="tag t-asr">What was said · speech-to-text</span><span class="tag t-sim hide" id="simtag">Simulated example, not a real call</span><div class="tr" id="tr"></div></div>
+<div class="card ai"><span class="tag t-ai">AI interpretation</span><span class="tag t-sim hide" id="srctag"></span>
+<div class="lvl" id="lvl"></div><div class="gauge" id="gauge"><b></b><b></b><b></b><b></b></div><p id="sum" style="margin:0"></p><div class="chips" id="tac"></div></div>
+<div class="card"><h3>Warning signs found in the words</h3><div id="ev"></div><p class="small" id="drop-note"></p><div id="miss" class="small"></div></div>
+<div class="card ai"><h3>In simple words</h3><p id="exp" style="font-size:19px"></p>
+<div class="row"><button class="pri" id="play">▶ Play warning aloud</button><button id="stopa" class="hide">■ Stop</button></div><p class="small" id="spk"></p></div>
+<div class="card"><h3>What you can do now</h3><div id="chk"></div><p class="small" id="unc"></p></div>
+</div>
+<div class="card small"><b>BhashaShield identifies potential warning signs. It cannot guarantee that a call is fraudulent or legitimate.</b><br>Privacy: audio you add is sent from this app’s server to Sarvam AI for transcription; text is sent to Sarvam AI for analysis and voice. Nothing is stored by BhashaShield. It does not monitor, intercept or record calls. If money was lost, call 1930 (India cyber-crime helpline) quickly.</div>
+</main></div></div>
+<script>
+const $=id=>document.getElementById(id);let blob=null,fname="",mr=null,chunks=[],audio=null,ctx=0;
+const SAMPLES={scam:"नमस्कार सर, मी बँकेतून बोलत आहे. तुमचे खाते आज बंद होणार आहे. ते सुरू ठेवण्यासाठी लगेच तुमचा OTP सांगा. नाहीतर तुमचे पैसे अडकतील.",
+amb:"नमस्कार, मी तुमच्या बँकेच्या शाखेतून बोलत आहे. तुमच्या कर्जाचा हप्ता उद्या देय आहे. कृपया बँकेच्या अधिकृत अॅपवरून भरा. आम्ही कधीही OTP किंवा पासवर्ड विचारत नाही."};
+const LV={High:["High risk indicators","var(--red)",4],Medium:["Some risk indicators","var(--amb)",3],Low:["Few obvious risk indicators","var(--grn)",1],Uncertain:["Insufficient information","var(--mu)",2]};
+$("wave").innerHTML="<i></i>".repeat(36);[...$("wave").children].forEach((b,i)=>b.style.animationDelay=(i%9)*.09+"s");
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const step=(n,done)=>document.querySelectorAll(".step").forEach(s=>{const i=+s.dataset.s;s.className="step"+(i<n||done?" done":i==n?" act":"")});
+const show=(m)=>$("msg").innerHTML=m?`<div class="err" role="alert">${esc(m)}</div>`:"";
+fetch("/api/status").then(r=>r.json()).then(s=>{$("mode").textContent=s.live?"Live · Sarvam AI":"Demo mode · no API key";$("mode").classList.toggle("live",s.live)}).catch(()=>$("mode").textContent="Server offline");
+function setFile(b,n){blob=b;fname=n;$("go").disabled=false;const u=URL.createObjectURL(b),a=new Audio(u);a.onloadedmetadata=()=>{const d=Math.round(a.duration);$("fileinfo").textContent=isFinite(d)?`${n} · ${Math.floor(d/60)}:${String(d%60).padStart(2,"0")}`:n}; $("fileinfo").textContent=n}
+$("drop").onclick=()=>$("file").click();$("drop").onkeydown=e=>e.key==="Enter"&&$("file").click();
+$("file").onchange=e=>e.target.files[0]&&setFile(e.target.files[0],e.target.files[0].name);
+$("drop").ondragover=e=>{e.preventDefault();$("drop").classList.add("on")};$("drop").ondragleave=()=>$("drop").classList.remove("on");
+$("drop").ondrop=e=>{e.preventDefault();$("drop").classList.remove("on");const f=e.dataTransfer.files[0];f&&setFile(f,f.name)};
+$("rec").onclick=async()=>{if(!$("consent").checked)return show("Please tick the consent box before recording.");show("");
+ try{const st=await navigator.mediaDevices.getUserMedia({audio:true});mr=new MediaRecorder(st);chunks=[];mr.ondataavailable=e=>chunks.push(e.data);
+ mr.onstop=()=>{st.getTracks().forEach(t=>t.stop());$("wave").className="wave";const ext=(mr.mimeType||"").includes("ogg")?"ogg":"webm";setFile(new Blob(chunks,{type:mr.mimeType}),"recording."+ext)};
+ mr.start();$("wave").className="wave go rec";$("rec").classList.add("hide");$("stop").classList.remove("hide")}catch(e){show("Microphone access was blocked. Allow it in your browser, or upload a file instead.")}};
+$("stop").onclick=()=>{mr&&mr.state!=="inactive"&&mr.stop();$("stop").classList.add("hide");$("rec").classList.remove("hide")};
+async function api(u,opt){const r=await fetch(u,opt);let j={};try{j=await r.json()}catch{}if(!r.ok)throw new Error(j.error||"Request failed ("+r.status+")");return j}
+function busy(b){$("go").disabled=b||!blob;$("d1").disabled=$("d2").disabled=b;$("wave").className="wave"+(b?" go":"")}
+async function analyze(text,sim){const my=++ctx;step(2);
+ const a=await api("/api/analyze",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({transcript:text,lang:$("out").value})});
+ if(my===ctx)render(text,a,sim)}
+$("go").onclick=async()=>{show("");busy(true);step(0);try{const fd=new FormData();fd.append("file",blob,fname);fd.append("language",$("asr").value);step(1);
+ const t=await api("/api/transcribe",{method:"POST",body:fd});await analyze(t.transcript,false)}catch(e){show(e.message);step(9)}busy(false)};
+async function demo(k){show("");busy(true);step(0);$("empty").classList.add("hide");$("res").classList.remove("hide");$("tr").textContent=SAMPLES[k];$("simtag").classList.remove("hide");
+ try{await analyze(SAMPLES[k],true)}catch(e){show(e.message);step(9)}busy(false)}
+$("d1").onclick=()=>demo("scam");$("d2").onclick=()=>demo("amb");
+let WARN="";
+function render(text,a,sim){$("empty").classList.add("hide");const R=$("res");R.classList.remove("hide");R.classList.remove("res");void R.offsetWidth;R.classList.add("res");
+ $("simtag").classList.toggle("hide",!sim);const L=LV[a.risk_level]||LV.Uncertain;
+ const rng=[];(a.suspicious_phrases||[]).forEach(p=>{const i=text.indexOf(p.phrase);if(i>=0)rng.push([i,i+p.phrase.length])});rng.sort((x,y)=>x[0]-y[0]);
+ let h="",pos=0;rng.forEach(([s,e])=>{if(s<pos)return;h+=esc(text.slice(pos,s))+"<mark>"+esc(text.slice(s,e))+"</mark>";pos=e});$("tr").innerHTML=h+esc(text.slice(pos));
+ $("lvl").textContent=L[0];$("lvl").style.color=L[1];[...$("gauge").children].forEach((b,i)=>b.style.background=i<L[2]?L[1]:"");
+ $("sum").textContent=a.short_summary||"";$("tac").innerHTML=(a.tactics||[]).map(t=>`<span>${esc(t)}</span>`).join("");
+ const st=$("srctag");st.classList.toggle("hide",a.source==="live");st.textContent=a.source==="live"?"":"Pre-written demo analysis, not live AI output";
+ $("ev").innerHTML=(a.suspicious_phrases||[]).map(p=>`<div class="ev"><q>${esc(p.phrase)}</q><div class="small">${esc(p.reason||"")}</div></div>`).join("")||`<p class="small">No clear warning phrases were found in these words.</p>`;
+ $("drop-note").textContent=a.dropped_unverified?`${a.dropped_unverified} phrase(s) suggested by the AI were hidden because they were not found in the transcript.`:"Every highlighted phrase was checked against the transcript.";
+ $("miss").innerHTML=(a.missing_evidence||[]).length?"To be more sure we would need: "+esc(a.missing_evidence.join("; ")):"";
+ $("exp").textContent=a.explanation||"";WARN=a.spoken_warning||a.short_summary||"";$("spk").textContent="Spoken: “"+WARN+"”";
+ $("chk").innerHTML=(a.safe_next_steps||[]).map(s=>`<label class="chk"><input type="checkbox"><span>${esc(s)}</span></label>`).join("");$("unc").textContent=a.uncertainty_note||"";
+ step(3,true);R.scrollIntoView({behavior:"smooth",block:"start"})}
+function stopA(){if(audio){audio.pause();audio=null}speechSynthesis.cancel();$("stopa").classList.add("hide");$("play").disabled=false;$("play").textContent="▶ Play warning aloud"}
+$("stopa").onclick=stopA;
+$("play").onclick=async()=>{stopA();$("play").disabled=true;$("play").innerHTML='<span class="spin"></span>Preparing voice';
+ try{const t=await api("/api/tts",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:WARN,lang:$("out").value})});
+ audio=new Audio("data:"+t.mime+";base64,"+t.audio_b64);audio.onended=stopA;await audio.play();$("play").textContent="Playing…";$("stopa").classList.remove("hide")}
+ catch(e){stopA();if("speechSynthesis"in window){const u=new SpeechSynthesisUtterance(WARN);u.lang={mr:"mr-IN",hi:"hi-IN",en:"en-IN"}[$("out").value];speechSynthesis.speak(u);show("Sarvam voice unavailable ("+e.message+"). Using your browser’s built-in voice instead.")}else show(e.message)}};
+</script></body></html>
